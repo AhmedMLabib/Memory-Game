@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Tahoma, sans-serif;
+}
+
+.control-button {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.control-button span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f44336;
+  color: white;
+  padding: 15px 25px;
+  font-size: 40px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.info-container {
+  width: 1200px;
+  margin: 20px auto 0;
+  background-color: #f6f6f6;
+  padding: 24px;
+  overflow: hidden;
+  border: 2px solid #2196f3;
+}
+.info-container .name {
+  float: left;
+  width: 50%;
+}
+.info-container .tries {
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+
+.memory-game-blocks {
+  display: flex;
+  width: 1200px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+.memory-game-blocks.no-clicking {
+  pointer-events: none;
+}
+.memory-game-blocks .game-block {
+  height: 200px;
+  width: 200px;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  flex: 1 0 200px;
+  margin: 0 10px 20px;
+}
+.memory-game-blocks .game-block .front {
+  background-color: #333;
+  line-height: 200px;
+}
+.memory-game-blocks .game-block .front::before {
+  content: "?";
+  color: white;
+  font-size: 200px;
+  font-weight: bold;
+}
+
+.memory-game-blocks .game-block .back {
+  background-color: #607d88;
+  transform: rotatey(180deg);
+}
+.memory-game-blocks .game-block .back img {
+  width: 140px;
+  height: 140px;
+  margin: 30px;
+}
+.memory-game-blocks .game-block .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  backface-visibility: hidden;
+  border: 5px solid #2196f3;
+}
+.memory-game-blocks .game-block.is-flipped,
+.memory-game-blocks .game-block.has-match {
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+.success {
+  display: none;
+  position: fixed;
+  top: 90px;
+  left: 70px;
+  width: 1200px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  z-index: 5;
+  font-size: 30px;
+  padding-top: 250px;
+  text-align: center;
+}
+.success.on {
+  display: block;
+}
+.success span {
+  font-size: 40px;
+  font-weight: bold;
+  color: #2196f3;
+}
